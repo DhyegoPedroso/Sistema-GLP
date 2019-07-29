@@ -9,7 +9,7 @@
 
     <name>Glp</name>
 
-   <properties>
+    <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -84,7 +84,7 @@
             <version>2.1.1.Final</version>
         </dependency>
         
-        <!--        <dependency>
+          <!--        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
