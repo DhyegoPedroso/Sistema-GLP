@@ -18,7 +18,15 @@
             30
         </session-timeout>
     </session-config>
-   <welcome-file-list>
+    <welcome-file-list>
         <welcome-file>login.faces</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/estrutura/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/estrutura/error.xhtml</location>
+    </error-page>
 </web-app>
