@@ -3,14 +3,17 @@ br\com\glp\model\Cliente.class
 br\com\glp\dao\CaminhaoDao.class
 br\com\glp\dao\ClienteDao.class
 br\com\glp\model\Produto.class
+br\com\glp\controller\ProdutoControle.class
 br\com\glp\model\Perfil_.class
 br\com\glp\model\Cliente_.class
+br\com\glp\controller\Mensagem.class
 br\com\glp\dao\BaseDao.class
 br\com\glp\dao\FuncionarioDaoImpl.class
 br\com\glp\dao\PerfilDaoImpl.class
 br\com\glp\dao\ProdutoDao.class
 br\com\glp\model\Caminhao_.class
 br\com\glp\model\Perfil.class
+br\com\glp\controller\ClienteControle.class
 br\com\glp\model\Funcionario.class
 br\com\glp\util\GeradorTabela.class
 br\com\glp\dao\CaminhaoDaoImpl.class
@@ -35,5 +38,6 @@ br\com\glp\model\Pessoa_.class
 br\com\glp\util\InicializarPerfils.class
 br\com\glp\dao\ContatoDao.class
 br\com\glp\dao\EnderecoDao.class
+br\com\glp\controller\FuncionarioControl.class
 br\com\glp\dao\UsuarioDao.class
 br\com\glp\model\Funcionario_.class

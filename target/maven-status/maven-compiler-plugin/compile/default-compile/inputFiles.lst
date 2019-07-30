@@ -1,3 +1,4 @@
+E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\controller\Mensagem.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\CaminhaoDao.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\UsuarioDaoImpl.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\FuncionarioDaoImpl.java
@@ -12,6 +13,8 @@ E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\util\InicializarPerfils.
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\model\Pessoa.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\ContatoDao.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\model\Endereco.java
+E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\controller\ProdutoControle.java
+E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\controller\ClienteControle.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\model\Produto.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\model\Contato.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\ClienteDao.java
@@ -28,3 +31,4 @@ E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\ClienteDaoImpl.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\model\Funcionario.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\HibernateUtil.java
 E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\dao\UsuarioDao.java
+E:\01 - Faculdade\01 - TCS\Glp\src\main\java\br\com\glp\controller\FuncionarioControl.java
