@@ -101,13 +101,16 @@
                     <p:outputLabel for="nome" value="Nome :" />
                     <p:inputText id="nome" value="#{funcionarioC.funcionario.nome}" requiredMessage="Nome é obrigatório" required="true" style="width: 100%; max-width: 600px;"/>
 
-                    <p:outputLabel for="email" value="E-mail :" />
-                    <p:inputText id="email" value="#{funcionarioC.funcionario.email}"  type="email" requiredMessage="E-mail é obrigatório" 
-                                 required="true" style="width: 100%; max-width: 600px;"/>
-
-                    <p:outputLabel for="telefone" value="Telefone: " />
-                    <p:inputMask id="telefone" value="#{funcionarioC.funcionario.telefone}" mask="(99) 99999-9999" style="width: 100%; max-width: 600px;"/>
-
+                    <p:column headerText="E-mail" priority="1">
+                        <h:outputText value="#{funcionario.contato.email}" />
+                    </p:column>
+                    <p:column headerText="Telefone" priority="1">
+                        <h:outputText value="#{funcionario.contato.telefone}" />
+                    </p:column>                    
+                    <p:column headerText="Celular" priority="1">
+                        <h:outputText value="#{funcionario.contato.celular}" />
+                    </p:column>
+                    
                     <p:outputLabel for="cpf" value="CPF: " />
                     <p:inputMask id="cpf" value="#{funcionarioC.funcionario.cpf}" required="true" 
                                  requiredMessage="CPF é obrigatório" mask="999.999.999-99" 
@@ -116,6 +119,13 @@
                     <p:outputLabel for="matricula" value="Matricula :" />
                     <p:inputText id="matricula" value="#{funcionarioC.funcionario.matricula}" requiredMessage="Matricula é obrigatório" 
                                  required="true" style="width: 100%; max-width: 600px;"/>
+                    
+                    <p:outputLabel for="perfil" value="Perfil: "/>
+                    <p:selectOneMenu styleClass="form-control" id="perfil" value="#{funcionarioC.funcionario.usuario.perfil.id}" required="true" 
+                                     requiredMessage="Perfil é obrigatório">
+                        <f:selectItem itemLabel="Selecione um Perfil" itemValue=""/>
+                        <f:selectItems value="#{funcionarioC.perfils}"
+                    </p:selectOneMenu>
 
                     <p:outputLabel for="cep" value="Cep :" />
                     <p:inputText id="cep" value="#{funcionarioC.endereco.cep}"  style="width: 100%; max-width: 600px;"

@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -30,6 +31,7 @@ public class FuncionarioControl implements Serializable {
     private DataModel<Funcionario> modelFuncionarios;
     private List<Funcionario> funcionarios;
     private boolean mostrar_toolbar;
+    private List<SelectItem> perfils;
 
     private void abreSessao() {
         if (session == null) {
@@ -162,6 +164,14 @@ public class FuncionarioControl implements Serializable {
 
     public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
+    }
+    
+    public List<SelectItem> getPerfils() {
+        return perfils;
+    }
+
+    public void setPerfils(List<SelectItem> perfils) {
+        this.perfils = perfils;
     }
 
     public boolean isMostrar_toolbar() {
