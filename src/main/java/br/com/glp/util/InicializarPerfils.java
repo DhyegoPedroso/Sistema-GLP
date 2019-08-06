@@ -31,7 +31,7 @@ public class InicializarPerfils {
         Contato contatoAdmin = new Contato("(48) 3030-3030", "(48) 99999-9999", "Admin@Admin.com", true);
         Endereco enderecoAdmin = new Endereco("Admin", 100, "Admin", "Admin", "Admin", "Admin", "Admin", "Admin");
         Usuario usuarioAdmin = new Usuario("admin", "admin", true, perfilAdmin);
-        Funcionario funcionarioAdmin = new Funcionario("333.333.333-33", "123456789", usuarioAdmin, "Admin Admin", enderecoAdmin, contatoAdmin, new Date());
+        Funcionario funcionarioAdmin = new Funcionario("3.652.652-9", "333.333.333-33", "123456789", "Masculino", usuarioAdmin, "Admin Admin", enderecoAdmin, contatoAdmin, new Date());
 
         contatoAdmin.setPessoa(funcionarioAdmin);
 
@@ -48,7 +48,7 @@ public class InicializarPerfils {
         Contato contatoConferente = new Contato("(48) 3030-3030", "(48) 99999-9999", "Conferente@Conferente.com", true);
         Endereco enderecoConferrente = new Endereco("Conferente", 100, "Conferente", "Conferente", "Conferente", "Conferente", "Conferente", "Conferente");
         Usuario usuarioConferente = new Usuario("conferente", "conferente", true, perfilConferente);
-        Funcionario funcionarioConferente = new Funcionario("333.333.333-33", "123456789", usuarioConferente, "Conferente Conferente", enderecoConferrente, contatoConferente, new Date());
+        Funcionario funcionarioConferente = new Funcionario("3.652.652-9", "333.333.333-33", "123456789", "Masculino", usuarioConferente, "Conferente Conferente", enderecoConferrente, contatoConferente, new Date());
 
         contatoConferente.setPessoa(funcionarioConferente);
 

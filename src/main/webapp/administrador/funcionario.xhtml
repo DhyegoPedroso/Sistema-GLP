@@ -7,7 +7,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/estrutura/template.xhtml">
 
-    <ui:define name="title">Funcionario</ui:define>
+    <ui:define name="title">Funcionário</ui:define>
 
     <ui:define name="content">
 
@@ -44,19 +44,19 @@
                     </p:column>
 
                     <p:column headerText="Telefone" priority="1">
-                        <h:outputText value="#{funcionario.contato.telefone}" />
+                        <h:outputText value="#{contato.telefone}" />
                     </p:column>
 
                     <p:column headerText="Celular" priority="1">
-                        <h:outputText value="#{funcionario.contato.celular}" />
+                        <h:outputText value="#{contato.celular}" />
                     </p:column>
 
                     <p:column headerText="Whatsapp:" priority="1">
-                        <h:outputText value="#{funcionario.contato.whatsapp}" />
+                        <h:outputText value="#{contato.whatsapp}" />
                     </p:column>
 
                     <p:column headerText="E-Mail" priority="1">
-                        <h:outputText value="#{funcionario.contato.email}" />
+                        <h:outputText value="#{contato.email}" />
                     </p:column>
 
                     <p:column headerText="Alterar" class="centralizado tabela_botao_usuario" priority="1" >
@@ -103,20 +103,32 @@
                         <p:outputLabel for="nomeFunc" value="Nome:" />
                         <p:inputText id="nomeFunc" value="#{funcionarioC.funcionario.nome}" size="40"/>
 
+                        <p:outputLabel for="sexoFunc" value="Sexo: " />
+                        <h:panelGrid columns="3" >
+                            <p:selectOneRadio id="sexoFunc" value="#{funcionarioC.funcionario.sexo}" >
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+                                <f:selectItem itemLabel="Outros" itemValue="Outros" />
+                            </p:selectOneRadio>
+                        </h:panelGrid>
+
+                        <p:outputLabel for="rgFunc" value="RG:" />
+                        <p:inputMask id="rgFunc" value="#{funcionarioC.funcionario.rg}"  mask="9.999.999-9" size="40" />
+
                         <p:outputLabel for="cpfFunc" value="CPF:" />
                         <p:inputMask id="cpfFunc" value="#{funcionarioC.funcionario.cpf}" mask="999.999.999-99" size="40" />
 
                         <p:outputLabel for="foneFunc" value="Telefone: " />
-                        <p:inputMask id="foneFunc" value="#{funcionarioC.funcionario.contato.telefone}" mask="(99) 9999-9999" size="40" />
+                        <p:inputMask id="foneFunc" value="#{funcionarioC.contato.telefone}" mask="(99) 9999-9999" size="40" />
 
                         <p:outputLabel for="celularFunc" value="Celular:" />
-                        <p:inputMask id="celularFunc" value="#{funcionarioC.funcionario.contato.celular}" mask="(99) 99999-9999" size="40" />
+                        <p:inputMask id="celularFunc" value="#{funcionarioC.contato.celular}" mask="(99) 99999-9999" size="40" />
 
                         <p:outputLabel for="btWhats" value="Whatsapp?"/>
-                        <p:selectBooleanButton id="btWhats" value="#{funcionarioC.funcionario.contato.whatsapp}" onLabel="Sim" offLabel="Não" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
+                        <p:selectBooleanButton id="btWhats" value="#{funcionarioC.contato.whatsapp}" onLabel="Sim" offLabel="Não" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
 
                         <p:outputLabel for="emailFunc" value="E-Mail:" />
-                        <p:inputText id="emailFunc" value="#{funcionarioC.funcionario.contato.email}" size="40" />
+                        <p:inputText id="emailFunc" value="#{funcionarioC.contato.email}" size="40" />
 
                     </p:panelGrid>
 
@@ -159,13 +171,13 @@
                     <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-2, ui-grid-col-8" styleClass="painel_grid_noborder" >
 
                         <p:outputLabel for="loginFunc" value="Login:" />
-                        <p:inputText id="loginFunc" value="#{funcionarioC.funcionario.usuario.login}" size="40"/>
+                        <p:inputText id="loginFunc" value="#{funcionarioC.usuario.login}" size="40"/>
 
                         <p:outputLabel for="senhaFunc" value="Senha:" />
-                        <p:inputText type="password" id="senhaFunc" value="#{funcionarioC.funcionario.usuario.senha}"  size="40"/>
+                        <p:inputText type="password" id="senhaFunc" value="#{funcionarioC.usuario.senha}"  size="40"/>
 
                         <h:outputLabel for="perfilFunc" value="Perfil:" />
-                        <p:selectOneMenu styleClass="form-control" id="perfil" value="#{funcionarioC.funcionario.usuario.perfil.id}" required="true" 
+                        <p:selectOneMenu styleClass="form-control" id="perfil" value="#{funcionarioC.perfil.id}" required="true" 
                                          requiredMessage="Perfil é obrigatório"  >
                             <f:selectItem itemLabel="Selecione um Perfil" itemValue="" />
                             <f:selectItems value="#{funcionarioC.perfils}" />

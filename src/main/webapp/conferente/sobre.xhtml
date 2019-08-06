@@ -13,20 +13,22 @@
 
         <h:form id="form_pesquisa">
 
-            <!--<p:messages id="mens"  autoUpdate="true" />-->
+            <p:messages id="mens" >
+                <p:autoUpdate/>
+            </p:messages>
 
             <p:fieldset legend="Desenvolvedores">
-                
-               <p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" styleClass="painel_grid_noborder" 
-                                 style="width: 100%">
-                   
-                   <p:outputLabel value="Leonardo" />
-                   <p:outputLabel value="Dhyego" />
-                   <p:outputLabel value="Rossi" />
-                   <p:outputLabel value="Pedro Viado mais perdido que cego em tiroteio" />
-                   
-               </p:panelGrid>
-                
+
+                <p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" styleClass="painel_grid_noborder" 
+                             style="width: 100%">
+
+                    <p:outputLabel value="Leonardo" />
+                    <p:outputLabel value="Dhyego" />
+                    <p:outputLabel value="Rossi" />
+                    <p:outputLabel value="Pedro Viado mais perdido que cego em tiroteio" />
+
+                </p:panelGrid>
+
             </p:fieldset>
 
         </h:form>

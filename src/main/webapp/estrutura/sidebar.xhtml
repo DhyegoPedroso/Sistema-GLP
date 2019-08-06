@@ -31,7 +31,7 @@
 
                                     <li>
                                         <h:link outcome="/conferente/relatorio">
-                                            <i class="fa fw-fw fa-check"> Relatorio</i></h:link>
+                                            <i class="fa fw-fw fa-check"> Relatório</i></h:link>
                                     </li>
 
                                     <li>
@@ -39,11 +39,21 @@
                                             <i class="fa fw-fw fa-check"> Item do Pedido</i></h:link>
                                     </li>
 
+                                    <li>
+                                        <h:link outcome="/conferente/movimentacao">
+                                            <i class="fa fw-fw fa-check"> Movimentação</i></h:link>
+                                    </li>
+
+                                    <li>
+                                        <h:link outcome="/conferente/estoque">
+                                            <i class="fa fw-fw fa-check"> Estoque</i></h:link>
+                                    </li>
+
                                     <h:panelGroup rendered="#{request.isUserInRole('ROLE_ADMIN')}" >
 
                                         <li>
                                             <h:link outcome="/administrador/funcionario">
-                                                <i class="fa fw-fw fa-user"> Funcionario</i></h:link>
+                                                <i class="fa fw-fw fa-user"> Funcionário</i></h:link>
                                         </li>
 
                                         <li>
@@ -62,7 +72,7 @@
                                             <i class="fa fw-fw fa-sign-out icon-signout"> Sobre</i></h:link>
                                     </li>
                                     <li>
-                                        <a href="Glp/logout"><i class="fa fw-fw fa-sign-out icon-signout"></i> - Sair</a>
+                                        <a href="Glp/logout"><i class="fa fw-fw fa-sign-out icon-signout"></i> Sair</a>
                                     </li>
 
                                 </ul>

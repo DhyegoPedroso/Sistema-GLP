@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.glp.controller;
-
 
 import br.com.glp.dao.HibernateUtil;
 import br.com.glp.dao.ProdutoDao;
@@ -23,41 +17,48 @@ import org.hibernate.Session;
  *
  * @author Pedrão Master
  */
-
-@ManagedBean(name ="produtoC")
+@ManagedBean(name = "produtoC")
 @ViewScoped
-public class ProdutoControle  implements Serializable {
-      private boolean mostrar_Toolbar;
-      private Session session;
-      private ProdutoDao dao;
-      private Produto produto;
-      private List<Produto> produtos;
-      private DataModel<Produto> modelProduto;
-      
-      private void abreSessao() {
+public class ProdutoControle implements Serializable {
+
+    private boolean mostrar_Toolbar;
+    private Session session;
+
+    private ProdutoDao produtoDao;
+
+    private Produto produto;
+
+    private List<Produto> produtos;
+    private DataModel<Produto> modelProduto;
+
+    public ProdutoControle() {
+        produtoDao = new ProdutoDaoImpl();
+    }
+
+    private void abreSessao() {
         if (session == null || !session.isOpen()) {
             session = HibernateUtil.abreSessao();
-        }else if (!session.isOpen()) {
+        } else if (!session.isOpen()) {
             session = HibernateUtil.abreSessao();
         }
     }
-     public void novo() {
+
+    public void novo() {
         mostrar_Toolbar = !mostrar_Toolbar;
     }
 
     public void novaPesquisa() {
         mostrar_Toolbar = !mostrar_Toolbar;
     }
-    
+
     public void preparaAlterar() {
         mostrar_Toolbar = !mostrar_Toolbar;
     }
-    
+
     public void pesquisar() {
-        dao = new ProdutoDaoImpl();
         try {
             abreSessao();
-            produtos = dao.pesquisaPorNome(produto.getTipoProduto(), session);
+            produtos = produtoDao.pesquisaPorNome(produto.getTipoProduto(), session);
             modelProduto = new ListDataModel(produtos);
             produto.setTipoProduto(null);
         } catch (Exception e) {
@@ -68,10 +69,9 @@ public class ProdutoControle  implements Serializable {
     }
 
     public void salvar() {
-        dao = new ProdutoDaoImpl();
         try {
             abreSessao();
-            dao.salvarOuAlterar(produto, session);
+            produtoDao.salvarOuAlterar(produto, session);
 
             Mensagem.salvar("Produto ");
         } catch (HibernateException ex) {
@@ -89,19 +89,18 @@ public class ProdutoControle  implements Serializable {
         produto = modelProduto.getRowData();
 
     }
-    
+
     public void carregarParaAlterar() {
         mostrar_Toolbar = !mostrar_Toolbar;
         produto = modelProduto.getRowData();
-        
+
     }
 
     public void excluir() {
         produto = modelProduto.getRowData();
-        dao = new ProdutoDaoImpl();
         try {
             abreSessao();
-            dao.remover(produto, session);
+            produtoDao.remover(produto, session);
             Mensagem.excluir("Equipamento ");
         } catch (Exception ex) {
             System.err.println("Erro ao excluir equipamento\n" + ex.getMessage());
@@ -109,6 +108,7 @@ public class ProdutoControle  implements Serializable {
             session.close();
         }
     }
+
     public Produto getProduto() {
         if (produto == null) {
             produto = new Produto();
@@ -133,15 +133,14 @@ public class ProdutoControle  implements Serializable {
         this.session = session;
     }
 
-    public ProdutoDao getDao() {
-        return dao;
+    public ProdutoDao getProdutoDao() {
+        return produtoDao;
     }
 
-    public void setDao(ProdutoDao dao) {
-        this.dao = dao;
+    public void setProdutoDao(ProdutoDao produtoDao) {
+        this.produtoDao = produtoDao;
     }
 
-    
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
@@ -161,6 +160,5 @@ public class ProdutoControle  implements Serializable {
     public void setModelProduto(DataModel<Produto> modelProduto) {
         this.modelProduto = modelProduto;
     }
-    
-    
+
 }

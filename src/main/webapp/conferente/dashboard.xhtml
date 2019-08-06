@@ -10,54 +10,19 @@
 
     <ui:define name="content">
 
-        <p:fieldset style="margin-bottom:20px; margin-top: 10px">
+        <p:messages id="mens" >
+            <p:autoUpdate/>
+        </p:messages>
 
-            <p:panelGrid columns="4" layout="grid" columnClasses="ui-grid-col4, ui-grid-col4, ui-grid-col4" styleClass="painel_grid_noborder"
-                         style="text-align: center;">
+        <h:form id="form_pesquisa">
 
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="peditos_do_dia:" value="Pedidos do Dia: " />
-                    <p:outputLabel id="peditos_do_dia" value="2" />
-                </p:panelGrid>
+            <p:messages id="mens"  >
+                <p:autoUpdate/>
+            </p:messages>
 
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="clientes_do_dia:" value="Clientes do Dia: " />
-                    <p:outputLabel id="clientes_do_dia" value="25" />
-                </p:panelGrid>
+            <h1>Dashboard</h1>
 
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="peditos_dia_anterior:" value="Pedidos do Dia Anterior: " />
-                    <p:outputLabel id="peditos_dia_anterior" value="80" />
-                </p:panelGrid>
-
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="clientes_dia_anterior:" value="Clientes do Dia Anterior: " />
-                    <p:outputLabel id="clientes_dia_anterior" value="35" />
-                </p:panelGrid>
-
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="recorder_de_pedidos:" value="Recorder de Pedidos: " />
-                    <p:outputLabel id="recorder_de_pedidos" value="80" />
-                </p:panelGrid>
-
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="recorder_de_clientes:" value="Recorder de Clientes: " />
-                    <p:outputLabel id="recorder_de_clientes" value="35" />
-                </p:panelGrid>
-
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="contador_de_pedidos:" value="Recorder de Pedidos: " />
-                    <p:outputLabel id="contador_de_pedidos" value="80" />
-                </p:panelGrid>
-
-                <p:panelGrid columns="1" style="height: 100%; width: 100%;">
-                    <p:outputLabel for="contador_de_clientes:" value="Recorder de Clientes: " />
-                    <p:outputLabel id="contador_de_clientes" value="35" />
-                </p:panelGrid>
-
-            </p:panelGrid>
-
-        </p:fieldset>
+        </h:form>
 
     </ui:define>
 

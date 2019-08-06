@@ -3,8 +3,11 @@ package br.com.glp.controller;
 import br.com.glp.dao.FuncionarioDao;
 import br.com.glp.dao.FuncionarioDaoImpl;
 import br.com.glp.dao.HibernateUtil;
+import br.com.glp.model.Contato;
 import br.com.glp.model.Endereco;
 import br.com.glp.model.Funcionario;
+import br.com.glp.model.Perfil;
+import br.com.glp.model.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -23,15 +26,25 @@ import org.hibernate.Session;
 @ViewScoped
 public class FuncionarioControl implements Serializable {
 
-    private Funcionario funcionario;
-    private FuncionarioDao funcionarioDao;
-    private List<Endereco> enderecos;
-    private Endereco endereco;
     private Session session;
+    private boolean mostrar_toolbar;
+
+    private Funcionario funcionario;
+    private Endereco endereco;
+    private Contato contato;
+    private Usuario usuario;
+    private Perfil perfil;
+
+    private FuncionarioDao funcionarioDao;
+
     private DataModel<Funcionario> modelFuncionarios;
     private List<Funcionario> funcionarios;
-    private boolean mostrar_toolbar;
+    private List<Endereco> enderecos;
     private List<SelectItem> perfils;
+
+    public FuncionarioControl() {
+        funcionarioDao = new FuncionarioDaoImpl();
+    }
 
     private void abreSessao() {
         if (session == null) {
@@ -54,7 +67,6 @@ public class FuncionarioControl implements Serializable {
     }
 
     public void pesquisar() {
-        funcionarioDao = new FuncionarioDaoImpl();
         try {
             abreSessao();
             funcionarios = funcionarioDao.pesquisaPorNome(funcionario.getNome(), session);
@@ -79,7 +91,6 @@ public class FuncionarioControl implements Serializable {
 
     public void excluir() {
         funcionario = modelFuncionarios.getRowData();
-        funcionarioDao = new FuncionarioDaoImpl();
         abreSessao();
         try {
             funcionarioDao.remover(funcionario, session);
@@ -95,7 +106,6 @@ public class FuncionarioControl implements Serializable {
     }
 
     public void salvar() {
-        funcionarioDao = new FuncionarioDaoImpl();
         abreSessao();
         try {
             funcionario.setEndereco(endereco);
@@ -165,7 +175,7 @@ public class FuncionarioControl implements Serializable {
     public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
-    
+
     public List<SelectItem> getPerfils() {
         return perfils;
     }
@@ -180,6 +190,55 @@ public class FuncionarioControl implements Serializable {
 
     public void setMostrar_toolbar(boolean mostrar_toolbar) {
         this.mostrar_toolbar = mostrar_toolbar;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public Contato getContato() {
+        if (contato == null) {
+            contato = new Contato();
+        }
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+    public Usuario getUsuario() {
+        if (usuario == null) {
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Perfil getPerfil() {
+        if (perfil == null) {
+            perfil = new Perfil();
+        }
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
+    public FuncionarioDao getFuncionarioDao() {
+        return funcionarioDao;
+    }
+
+    public void setFuncionarioDao(FuncionarioDao funcionarioDao) {
+        this.funcionarioDao = funcionarioDao;
     }
 
 }
