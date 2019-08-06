@@ -1,3 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -5,205 +7,30 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/estrutura/template.xhtml">
 
-
-    <ui:define name="title">Pedido</ui:define>
+    <ui:define name="title">Produto</ui:define>
 
     <ui:define name="content">
 
-        <h:form id="pedidos">
-
-            <p:messages id="mens"  />
-
-            <p:fieldset style="margin-bottom:20px; margin-top: 10px">
-                <p:panelGrid columns="3" layout="grid" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" 
-                             styleClass="painel_grid_noborder"
-                             style="text-align: left">
-
-                    <p:fieldset legend="Mesa 01" >
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM01" value="Cliente: " />
-                            <p:outputLabel id="clienteM01" value="" />
-
-                            <p:outputLabel for="valorM01" class="teste" value="R$: "/>
-                            <p:outputLabel id="valorM01" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 02" >
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM02" value="Cliente: " />
-                            <p:outputLabel id="clienteM02" value="" />
-
-                            <p:outputLabel for="valorM02" value="R$: "/>
-                            <p:outputLabel id="valorM02" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 03" >
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM03" value="Cliente: " />
-                            <p:outputLabel id="clienteM03" value="" />
-
-                            <p:outputLabel for="valorM03" value="R$: "/>
-                            <p:outputLabel id="valorM03" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 04">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM04" value="Cliente: " />
-                            <p:outputLabel id="clienteM04" value="" />
-
-                            <p:outputLabel for="valorM04" value="R$: "/>
-                            <p:outputLabel id="valorM04" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 05">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM05" value="Cliente: " />
-                            <p:outputLabel id="clienteM05" value="" />
-
-                            <p:outputLabel for="valorM05" value="R$: "/>
-                            <p:outputLabel id="valorM05" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 06">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM06" value="Cliente: " />
-                            <p:outputLabel id="clienteM06" value="" />
-
-                            <p:outputLabel for="valorM06" value="R$: "/>
-                            <p:outputLabel id="valorM06" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 07">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM07" value="Cliente: " />
-                            <p:outputLabel id="clienteM07" value="" />
-
-                            <p:outputLabel for="valorM07" value="R$: "/>
-                            <p:outputLabel id="valorM07" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 08">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM08" value="Cliente: " />
-                            <p:outputLabel id="clienteM08" value="" />
-
-                            <p:outputLabel for="valorM09" value="R$: "/>
-                            <p:outputLabel id="valorM08" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-
-                    <p:fieldset legend="Mesa 09">
-
-                        <p:panelGrid columns="1" layout="grid" style="margin-bottom: 15px; height: 100%; width: 100%">
-
-                            <p:spacer/>
-                            <p:commandButton value="Novo Item" style="margin-bottom: 15px"/>
-
-                            <p:outputLabel for="clienteM09" value="Cliente: " />
-                            <p:outputLabel id="clienteM09" value="" />
-
-                            <p:outputLabel for="valorM09" value="R$: "/>
-                            <p:outputLabel id="valorM09" value="" />
-
-                            <p:commandButton value="Comanda" style="margin-top: 15px"/>
-                            <p:commandButton value="Fechar Comanda" style="margin-top: 15px"/>
-
-                        </p:panelGrid>
-
-                    </p:fieldset>
-                </p:panelGrid>
-
+        <h:form id="form_pesquisa">
+
+            <!--<p:messages id="mens"  autoUpdate="true" />-->
+
+            <p:fieldset legend="Desenvolvedores">
+                
+               <p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" styleClass="painel_grid_noborder" 
+                                 style="width: 100%">
+                   
+                   <p:outputLabel value="Leonardo" />
+                   <p:outputLabel value="Dhyego" />
+                   <p:outputLabel value="Rossi" />
+                   <p:outputLabel value="Pedro Viado mais perdido que cego em tiroteio" />
+                   
+               </p:panelGrid>
+                
             </p:fieldset>
 
         </h:form>
 
     </ui:define>
-
 </ui:composition>
+
