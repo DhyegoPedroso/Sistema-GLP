@@ -3,13 +3,18 @@ package br.com.glp.controller;
 import br.com.glp.dao.FuncionarioDao;
 import br.com.glp.dao.FuncionarioDaoImpl;
 import br.com.glp.dao.HibernateUtil;
+import br.com.glp.dao.PerfilDao;
+import br.com.glp.dao.PerfilDaoImpl;
 import br.com.glp.model.Contato;
 import br.com.glp.model.Endereco;
 import br.com.glp.model.Funcionario;
 import br.com.glp.model.Perfil;
 import br.com.glp.model.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
@@ -38,9 +43,14 @@ public class FuncionarioControl implements Serializable {
     private FuncionarioDao funcionarioDao;
 
     private DataModel<Funcionario> modelFuncionarios;
-    private List<Funcionario> funcionarios;
-    private List<Endereco> enderecos;
     private List<SelectItem> perfils;
+    private List<Funcionario> funcionarios;
+    private String pesqNome = "";
+
+    @PostConstruct
+    public void inicializar() {
+        carregaPerfil();
+    }
 
     public FuncionarioControl() {
         funcionarioDao = new FuncionarioDaoImpl();
@@ -56,24 +66,61 @@ public class FuncionarioControl implements Serializable {
 
     public void novo() {
         mostrar_toolbar = !mostrar_toolbar;
+        limpar();
     }
 
     public void novaPesquisa() {
         mostrar_toolbar = !mostrar_toolbar;
+        limpar();
     }
 
     public void preparaAlterar() {
         mostrar_toolbar = !mostrar_toolbar;
+        limpar();
+    }
+
+    public void carregarParaAlterar() {
+        mostrar_toolbar = !mostrar_toolbar;
+        funcionario = modelFuncionarios.getRowData();
+        contato = funcionario.getContato();
+        endereco = funcionario.getEndereco();
+        usuario = funcionario.getUsuario();
+        perfil = usuario.getPerfil();
     }
 
     public void pesquisar() {
+        funcionarioDao = new FuncionarioDaoImpl();
         try {
             abreSessao();
-            funcionarios = funcionarioDao.pesquisaPorNome(funcionario.getNome(), session);
+
+            if (!pesqNome.equals("")) {
+                funcionarios = funcionarioDao.pesquisaPorNome(pesqNome, session);
+            } else {
+                funcionarios = funcionarioDao.listaTodos(session);
+            }
+
             modelFuncionarios = new ListDataModel(funcionarios);
-            funcionario.setNome(null);
-        } catch (Exception e) {
-            System.out.println("erro ao pesquisar funcionario por nome: " + e.getMessage());
+            pesqNome = null;
+        } catch (HibernateException ex) {
+            System.err.println("Erro pesquisa Funcionario:\n" + ex.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+
+    private void carregaPerfil() {
+        List<Perfil> todosPerfis;
+        try {
+            abreSessao();
+            perfils = new ArrayList();
+
+            PerfilDao perfilDao = new PerfilDaoImpl();
+            todosPerfis = perfilDao.listaTodos(session);
+            todosPerfis.stream().forEach((perf) -> {
+                perfils.add(new SelectItem(perf.getId(), perf.getNome()));
+            });
+        } catch (HibernateException hi) {
+            System.out.println("Erro ao carregar os perfil " + hi.getMessage());
         } finally {
             session.close();
         }
@@ -81,12 +128,10 @@ public class FuncionarioControl implements Serializable {
 
     public void limpar() {
         funcionario = new Funcionario();
-    }
-
-    public void carregarParaAlterar() {
-        mostrar_toolbar = !mostrar_toolbar;
-        funcionario = modelFuncionarios.getRowData();
-        endereco = funcionario.getEndereco();
+        contato = new Contato();
+        perfil = new Perfil();
+        endereco = new Endereco();
+        usuario = new Usuario();
     }
 
     public void excluir() {
@@ -106,23 +151,52 @@ public class FuncionarioControl implements Serializable {
     }
 
     public void salvar() {
-        abreSessao();
+
         try {
+            abreSessao();
+
             funcionario.setEndereco(endereco);
-            endereco.setPessoa(funcionario);
+//            endereco.setFuncionario(funcionario);
+            funcionario.setContato(contato);
+//            contato.setFuncionario(funcionario);
+            funcionario.setUsuario(usuario);
+            usuario.setFuncionario(funcionario);
+
+            usuario.setEnable(true);
+            usuario.setPerfil(perfil);
+
+            funcionario.setDtCadastro(new Date());
+
             funcionarioDao.salvarOuAlterar(funcionario, session);
-            Mensagem.salvar("Funcionario: " + funcionario.getNome());
             funcionario = null;
             endereco = null;
-        } catch (HibernateException e) {
-            System.out.println("Erro ao salvar funcionario" + e.getMessage());
+            contato = null;
+            usuario = null;
 
-        } catch (Exception e) {
-            System.out.println("Erro no salvar funcionarioDao Controle "
-                    + e.getMessage());
+        } catch (HibernateException ex) {
+            System.err.println("Erro ao Salvar funcionario:\n" + ex.getMessage());
         } finally {
             session.close();
         }
+        limpar();
+
+//        abreSessao();
+//        try {
+//            funcionario.setEndereco(endereco);
+//            endereco.setPessoa(funcionario);
+//            funcionarioDao.salvarOuAlterar(funcionario, session);
+//            Mensagem.salvar("Funcionario: " + funcionario.getNome());
+//            funcionario = null;
+//            endereco = null;
+//        } catch (HibernateException e) {
+//            System.out.println("Erro ao salvar funcionario" + e.getMessage());
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro no salvar funcionarioDao Controle "
+//                    + e.getMessage());
+//        } finally {
+//            session.close();
+//        }
     }
 
     public void limparTela() {
@@ -138,14 +212,6 @@ public class FuncionarioControl implements Serializable {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
-    }
-
-    public List<Endereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
     }
 
     public Endereco getEndereco() {
@@ -239,6 +305,14 @@ public class FuncionarioControl implements Serializable {
 
     public void setFuncionarioDao(FuncionarioDao funcionarioDao) {
         this.funcionarioDao = funcionarioDao;
+    }
+
+    public String getPesqNome() {
+        return pesqNome;
+    }
+
+    public void setPesqNome(String pesqNome) {
+        this.pesqNome = pesqNome;
     }
 
 }
