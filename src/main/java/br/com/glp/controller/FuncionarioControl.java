@@ -156,9 +156,9 @@ public class FuncionarioControl implements Serializable {
             abreSessao();
 
             funcionario.setEndereco(endereco);
-//            endereco.setFuncionario(funcionario);
+            endereco.setPessoa(funcionario);
             funcionario.setContato(contato);
-//            contato.setFuncionario(funcionario);
+            contato.setPessoa(funcionario);
             funcionario.setUsuario(usuario);
             usuario.setFuncionario(funcionario);
 
@@ -168,6 +168,7 @@ public class FuncionarioControl implements Serializable {
             funcionario.setDtCadastro(new Date());
 
             funcionarioDao.salvarOuAlterar(funcionario, session);
+            Mensagem.salvar("Funcionario: " + funcionario.getNome());
             funcionario = null;
             endereco = null;
             contato = null;
@@ -175,28 +176,14 @@ public class FuncionarioControl implements Serializable {
 
         } catch (HibernateException ex) {
             System.err.println("Erro ao Salvar funcionario:\n" + ex.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro no salvar funcionarioDao Controle "
+                    + e.getMessage());
         } finally {
             session.close();
         }
         limpar();
 
-//        abreSessao();
-//        try {
-//            funcionario.setEndereco(endereco);
-//            endereco.setPessoa(funcionario);
-//            funcionarioDao.salvarOuAlterar(funcionario, session);
-//            Mensagem.salvar("Funcionario: " + funcionario.getNome());
-//            funcionario = null;
-//            endereco = null;
-//        } catch (HibernateException e) {
-//            System.out.println("Erro ao salvar funcionario" + e.getMessage());
-//
-//        } catch (Exception e) {
-//            System.out.println("Erro no salvar funcionarioDao Controle "
-//                    + e.getMessage());
-//        } finally {
-//            session.close();
-//        }
     }
 
     public void limparTela() {

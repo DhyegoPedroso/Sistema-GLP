@@ -36,8 +36,7 @@ public class Pessoa implements Serializable {
     @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private Endereco endereco;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idContato")
+    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private Contato contato;
 
     @Column(name = "data_cadastro")
