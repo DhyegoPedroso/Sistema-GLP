@@ -31,7 +31,7 @@
                 <p:panelGrid id="panelGridPesq" columns="2" layout="grid" columnClasses="ui-grid-col-1, ui-grid-col-1, ui-grid-col-10" styleClass="painel_grid_noborder" >
 
                     <p:outputLabel for="pesqNome" value="Funcionario: "/>
-                    <p:inputText id="pesqNome" value="#{funcionarioC.pesqNome}" style="margin-left: 5px"/>
+                    <p:inputText id="pesqNome" value="#{funcionarioC.funcionario.nome}" style="margin-left: 5px"/>
                     <p:spacer />
 
                 </p:panelGrid>
@@ -57,6 +57,12 @@
 
                     <p:column headerText="E-Mail" priority="1">
                         <h:outputText value="#{funcionario.contato.email}" />
+                    </p:column>
+
+                    <p:column headerText="Data Contratação">
+                        <h:outputText value="#{funcionario.dtCadastro}">
+                            <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/>
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="Alterar" class="centralizado tabela_botao_usuario" priority="1" >

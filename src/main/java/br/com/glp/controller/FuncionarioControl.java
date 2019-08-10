@@ -11,6 +11,9 @@ import br.com.glp.model.Funcionario;
 import br.com.glp.model.Perfil;
 import br.com.glp.model.Usuario;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +48,7 @@ public class FuncionarioControl implements Serializable {
     private DataModel<Funcionario> modelFuncionarios;
     private List<SelectItem> perfils;
     private List<Funcionario> funcionarios;
-    private String pesqNome = "";
+//    private String pesqNome = "";
 
     @PostConstruct
     public void inicializar() {
@@ -93,14 +96,14 @@ public class FuncionarioControl implements Serializable {
         try {
             abreSessao();
 
-            if (!pesqNome.equals("")) {
-                funcionarios = funcionarioDao.pesquisaPorNome(pesqNome, session);
+            if (!funcionario.getNome().equals("")) {
+                funcionarios = funcionarioDao.pesquisaPorNome(funcionario.getNome(), session);
             } else {
                 funcionarios = funcionarioDao.listaTodos(session);
             }
 
             modelFuncionarios = new ListDataModel(funcionarios);
-            pesqNome = null;
+//            pesqNome = null;
         } catch (HibernateException ex) {
             System.err.println("Erro pesquisa Funcionario:\n" + ex.getMessage());
         } finally {
@@ -150,7 +153,21 @@ public class FuncionarioControl implements Serializable {
         }
     }
 
-    public void salvar() {
+    private static String convertPasswordToMD5(String senha) throws NoSuchAlgorithmException {
+        String retorno = "";
+        try {
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(senha.getBytes(), 0, senha.length());
+            retorno = new BigInteger(1, md.digest()).toString(16);
+
+        } catch (Exception e) {
+            System.out.println("Falha ao criptografar " + e.getMessage());
+        }
+        return retorno;
+    }
+
+    public void salvar() throws NoSuchAlgorithmException {
 
         try {
             abreSessao();
@@ -159,11 +176,15 @@ public class FuncionarioControl implements Serializable {
             endereco.setPessoa(funcionario);
             funcionario.setContato(contato);
             contato.setPessoa(funcionario);
+
             funcionario.setUsuario(usuario);
             usuario.setFuncionario(funcionario);
 
+            String senha = usuario.getSenha();
+
             usuario.setEnable(true);
             usuario.setPerfil(perfil);
+            usuario.setSenha(convertPasswordToMD5(senha));
 
             funcionario.setDtCadastro(new Date());
 
@@ -294,12 +315,11 @@ public class FuncionarioControl implements Serializable {
         this.funcionarioDao = funcionarioDao;
     }
 
-    public String getPesqNome() {
-        return pesqNome;
-    }
-
-    public void setPesqNome(String pesqNome) {
-        this.pesqNome = pesqNome;
-    }
-
+//    public String getPesqNome() {
+//        return pesqNome;
+//    }
+//
+//    public void setPesqNome(String pesqNome) {
+//        this.pesqNome = pesqNome;
+//    }
 }
