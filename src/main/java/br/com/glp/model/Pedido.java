@@ -29,8 +29,8 @@ import javax.persistence.TemporalType;
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Temporal(TemporalType.TIMESTAMP)
