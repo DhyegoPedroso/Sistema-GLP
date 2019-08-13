@@ -58,9 +58,9 @@ public class ProdutoControle implements Serializable {
     public void pesquisar() {
         try {
             abreSessao();
-            produtos = produtoDao.pesquisaPorNome(produto.getTipoProduto(), session);
+//            produtos = produtoDao.pesquisaPorNome(produto.getTipoProduto(), session);
             modelProduto = new ListDataModel(produtos);
-            produto.setTipoProduto(null);
+//            produto.setTipoProduto(null);
         } catch (Exception e) {
             System.out.println("erro ao pesquisar produto por tipo: " + e.getMessage());
         } finally {

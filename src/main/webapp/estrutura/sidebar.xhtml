@@ -35,23 +35,13 @@
                                     </li>
 
                                     <li>
-                                        <h:link outcome="/conferente/itemPedido">
-                                            <i class="fa fw-fw fa-check"> Item do Pedido</i></h:link>
-                                    </li>
-
-                                    <li>
-                                        <h:link outcome="/conferente/movimentacao">
-                                            <i class="fa fw-fw fa-check"> Movimentação</i></h:link>
+                                        <h:link outcome="/pedido/pedido">
+                                            <i class="fa fw-fw fa-check"> Pedido</i></h:link>
                                     </li>
 
                                     <li>
                                         <h:link outcome="/conferente/estoque">
                                             <i class="fa fw-fw fa-check"> Estoque</i></h:link>
-                                    </li>
-
-                                    <li>
-                                        <h:link outcome="/secreto/movimentacao">
-                                            <i class="fa fw-fw fa-check"> Movimentação</i></h:link>
                                     </li>
 
                                     <h:panelGroup rendered="#{request.isUserInRole('ROLE_ADMIN')}" >

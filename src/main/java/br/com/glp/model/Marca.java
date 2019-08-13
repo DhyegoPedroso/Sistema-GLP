@@ -1,21 +1,45 @@
 package br.com.glp.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dhyego Pedroso
  */
 @Entity
-public class Movimentacao implements Serializable {
+@Table(name = "marca")
+public class Marca implements Serializable {
+
     private static final long serialVersionUID = 1L;
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    private String nomeMarca;
+
+    @OneToOne(mappedBy = "marca")
+    private Produto produto;
+
+    public Marca() {
+    }
+
+    public Marca(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
+    }
+
+    public Marca(Long id, String nomeMarca, Produto produto) {
+        this.id = id;
+        this.nomeMarca = nomeMarca;
+        this.produto = produto;
+    }
 
     public Long getId() {
         return id;
@@ -23,6 +47,22 @@ public class Movimentacao implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNomeMarca() {
+        return nomeMarca;
+    }
+
+    public void setNomeMarca(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     @Override
@@ -35,10 +75,10 @@ public class Movimentacao implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Movimentacao)) {
+        if (!(object instanceof Marca)) {
             return false;
         }
-        Movimentacao other = (Movimentacao) object;
+        Marca other = (Marca) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -47,7 +87,7 @@ public class Movimentacao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.glp.model.Movimentacao[ id=" + id + " ]";
+        return "br.com.glp.model.Marca[ id=" + id + " ]";
     }
-    
+
 }

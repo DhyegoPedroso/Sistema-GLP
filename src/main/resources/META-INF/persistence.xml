@@ -3,6 +3,8 @@
   <persistence-unit name="glpPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.com.glp.model.Movimentacao</class>
+    <class>br.com.glp.model.Marca</class>
+    <class>br.com.glp.model.Situacao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/glp?createDatabaseIfNotExist=true&amp;useUnicode=yes&amp;characterEncoding=UTF-8"/>

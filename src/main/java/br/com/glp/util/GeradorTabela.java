@@ -12,8 +12,9 @@ public class GeradorTabela {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("glpPU");
         emf.close();
         
-        InicializarPerfils ip = new InicializarPerfils();
+        InicializarSistema ip = new InicializarSistema();
         ip.iniciarPerfils();
+        ip.inicializarProdutos();
         
     }
 }

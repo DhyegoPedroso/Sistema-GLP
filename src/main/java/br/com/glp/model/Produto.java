@@ -1,11 +1,14 @@
 package br.com.glp.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,29 +23,38 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false)
-    private int quantidade;
-    
+    private Integer quantidade;
+
     @Column(nullable = false)
-    private String tipoProduto;
-    
-    @Column(nullable = false)
-    private String marcaProduto;
-    
-    
+    private String nomeProduto;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idMarca")
+    private Marca marca;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idSituacao")
+    private Situacao situacao;
+
     public Produto() {
-    
     }
-    
-     public Produto(Long id, int quantidade, String tipoProduto, String marcaProduto) {
+
+    public Produto(Integer quantidade, String nomeProduto, Marca marca, Situacao situacao) {
+        this.quantidade = quantidade;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.situacao = situacao;
+    }
+
+    public Produto(Long id, Integer quantidade, String nomeProduto, Marca marca, Situacao situacao) {
         this.id = id;
         this.quantidade = quantidade;
-        this.tipoProduto = tipoProduto;
-        this.marcaProduto = marcaProduto;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.situacao = situacao;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -52,28 +64,36 @@ public class Produto implements Serializable {
         this.id = id;
     }
 
-    public int getQuantidade() {
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
-    public String getTipoProduto() {
-        return tipoProduto;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setTipoProduto(String tipoProduto) {
-        this.tipoProduto = tipoProduto;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 
-    public String getMarcaProduto() {
-        return marcaProduto;
+    public Situacao getSituacao() {
+        return situacao;
     }
 
-    public void setMarcaProduto(String marcaProduto) {
-        this.marcaProduto = marcaProduto;
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
     }
 
     @Override
@@ -101,7 +121,4 @@ public class Produto implements Serializable {
         return "br.com.senac.model.Produto[ id=" + id + " ]";
     }
 
-    
-    
-    
 }

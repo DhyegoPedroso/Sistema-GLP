@@ -5,9 +5,13 @@ import br.com.glp.model.Cliente;
 import br.com.glp.model.Contato;
 import br.com.glp.model.Endereco;
 import br.com.glp.model.Funcionario;
+import br.com.glp.model.ItemPedido;
+import br.com.glp.model.Marca;
+import br.com.glp.model.Pedido;
 import br.com.glp.model.Perfil;
 import br.com.glp.model.Pessoa;
 import br.com.glp.model.Produto;
+import br.com.glp.model.Situacao;
 import br.com.glp.model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,7 +41,11 @@ public class HibernateUtil {
             cfg.addAnnotatedClass(Perfil.class);
             cfg.addAnnotatedClass(Usuario.class);
             cfg.addAnnotatedClass(Caminhao.class);
+            cfg.addAnnotatedClass(Marca.class);
+            cfg.addAnnotatedClass(Situacao.class);
             cfg.addAnnotatedClass(Produto.class);
+            cfg.addAnnotatedClass(ItemPedido.class);
+            cfg.addAnnotatedClass(Pedido.class);
 
             cfg.configure("/META-INF/hibernate.cfg.xml");
 
