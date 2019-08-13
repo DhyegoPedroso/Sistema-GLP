@@ -31,7 +31,7 @@
                 <p:panelGrid id="panelGridPesq" columns="2" layout="grid" columnClasses="ui-grid-col-1, ui-grid-col-1, ui-grid-col-10" styleClass="painel_grid_noborder" >
 
                     <p:outputLabel for="pesqNome" value="Produto: "/>
-                    <p:inputText id="pesqNome" value="#{produtoC.produto.tipoProduto}" style="margin-left: 5px"/>
+                    <p:inputText id="pesqNome" value="#{produtoC.produto.nomeProduto}" style="margin-left: 5px"/>
                     <p:spacer />
 
                 </p:panelGrid>
@@ -42,13 +42,16 @@
                              currentPageReportTemplate="[ {currentPage} de {totalPages}  ]"
                              rowsPerPageTemplate="5,10,15">
                     <p:column headerText="Produto" priority="1">
-                        <h:outputText value="#{produto.tipoProduto}" />
+                        <h:outputText value="#{produto.nomeProduto}" />
                     </p:column>
                     <p:column headerText="Marca" priority="1">
-                        <h:outputText value="#{produto.marcaProduto}" />
+                        <h:outputText value="#{produto.marca.nomeMarca}" />
                     </p:column>
                     <p:column headerText="Quantidade" priority="1">
                         <h:outputText value="#{produto.quantidade}" />
+                    </p:column>
+                    <p:column headerText="Situação" priority="1">
+                        <h:outputText value="#{produto.situacao.nomeSituacao}" />
                     </p:column>
                     <p:column headerText="Alterar" class="centralizado tabela_botao_usuario"  >
                         <p:commandButton icon="ui-icon-pencil" title="Alterar"
@@ -97,12 +100,7 @@
                         <p:inputText id="quantidade" value="#{produtoC.produto.quantidade}" requiredMessage="Quantidade é obrigatório" required="true" style="width: 100%; max-width: 600px;"/>
 
                         <p:outputLabel for="tipoProduto" value="Tipo do Produto :" />
-                        <p:inputText id="tipoProduto" value="#{produtoC.produto.tipoProduto}"  type="tipoProduto" requiredMessage="Tipo do Produto é obrigatório" 
-                                     required="true" style="width: 100%; max-width: 600px;"/>
-
-
-                        <p:outputLabel for="marca" value="Marca :" />
-                        <p:inputText id="marca" value="#{produtoC.produto.marcaProduto}" requiredMessage="Marca é obrigatório" 
+                        <p:inputText id="tipoProduto" value="#{produtoC.produto.nomeProduto}"  type="tipoProduto" requiredMessage="Tipo do Produto é obrigatório" 
                                      required="true" style="width: 100%; max-width: 600px;"/>
 
                     </p:panelGrid>

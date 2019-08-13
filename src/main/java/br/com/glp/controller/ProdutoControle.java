@@ -3,7 +3,9 @@ package br.com.glp.controller;
 import br.com.glp.dao.HibernateUtil;
 import br.com.glp.dao.ProdutoDao;
 import br.com.glp.dao.ProdutoDaoImpl;
+import br.com.glp.model.Marca;
 import br.com.glp.model.Produto;
+import br.com.glp.model.Situacao;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -27,6 +29,8 @@ public class ProdutoControle implements Serializable {
     private ProdutoDao produtoDao;
 
     private Produto produto;
+    private Marca marca;
+    private Situacao situacao;
 
     private List<Produto> produtos;
     private DataModel<Produto> modelProduto;
@@ -45,22 +49,40 @@ public class ProdutoControle implements Serializable {
 
     public void novo() {
         mostrar_Toolbar = !mostrar_Toolbar;
+        limpar();
     }
 
     public void novaPesquisa() {
         mostrar_Toolbar = !mostrar_Toolbar;
+        limpar();
     }
 
     public void preparaAlterar() {
         mostrar_Toolbar = !mostrar_Toolbar;
+        limpar();
+    }
+
+    public void carregarParaAlterar() {
+        mostrar_Toolbar = !mostrar_Toolbar;
+        produto = modelProduto.getRowData();
+        marca.getProduto();
+        situacao.getProduto();
+
     }
 
     public void pesquisar() {
         try {
+
             abreSessao();
-//            produtos = produtoDao.pesquisaPorNome(produto.getTipoProduto(), session);
+
+            if (!produto.getNomeProduto().equals("")) {
+                produtos = produtoDao.pesquisaPorNome(produto.getNomeProduto(), session);
+            } else {
+                produtos = produtoDao.listaTodos(session);
+            }
             modelProduto = new ListDataModel(produtos);
-//            produto.setTipoProduto(null);
+
+//            produto.setNomeProduto(null);
         } catch (Exception e) {
             System.out.println("erro ao pesquisar produto por tipo: " + e.getMessage());
         } finally {
@@ -84,16 +106,10 @@ public class ProdutoControle implements Serializable {
         }
     }
 
-    public void alterarEquipamento() {
-        mostrar_Toolbar = !mostrar_Toolbar;
-        produto = modelProduto.getRowData();
-
-    }
-
-    public void carregarParaAlterar() {
-        mostrar_Toolbar = !mostrar_Toolbar;
-        produto = modelProduto.getRowData();
-
+    public void limpar() {
+        produto = new Produto();
+        marca = new Marca();
+        situacao = new Situacao();
     }
 
     public void excluir() {
@@ -115,6 +131,29 @@ public class ProdutoControle implements Serializable {
 
         }
         return produto;
+    }
+
+    public Marca getMarca() {
+        if (marca == null) {
+            marca = new Marca();
+        }
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Situacao getSituacao() {
+        if (situacao == null) {
+            situacao = new Situacao();
+
+        }
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
     }
 
     public boolean isMostrar_Toolbar() {

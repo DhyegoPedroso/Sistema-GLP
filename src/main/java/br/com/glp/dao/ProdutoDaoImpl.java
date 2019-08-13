@@ -4,8 +4,8 @@ import br.com.glp.model.Produto;
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 
 public class ProdutoDaoImpl extends BaseDaoImpl<Produto, Long> implements ProdutoDao, Serializable {
@@ -21,16 +21,16 @@ public class ProdutoDaoImpl extends BaseDaoImpl<Produto, Long> implements Produt
     }
 
     @Override
-    public List<Produto> pesquisaPorNome(String tipoProduto, Session session) throws HibernateException {
-        Query consulta = session.createQuery("from Produto p where p.tipoProduto like :tipoProduto");
-        consulta.setParameter("tipoProduto", tipoProduto + "%");
+    public List<Produto> pesquisaPorNome(String nomeProduto, Session session) throws HibernateException {
+        Query consulta = session.createQuery("from Produto p where p.nomeProduto like :nomeProduto");
+        consulta.setParameter("nomeProduto", nomeProduto + "%");
         return consulta.list();
     }
 
     @Override
-    public List<Produto> listarPorTipo(String tipoProduto, Session session) throws HibernateException {
-        Query consulta = session.createQuery("from Produto p where p.tipoProduto like :tipoProduto");
-        consulta.setParameter("tipoProduto", tipoProduto + "%");
+    public List<Produto> listarPorTipo(String nomeProduto, Session session) throws HibernateException {
+        Query consulta = session.createQuery("from Produto p where p.nomeProduto like :nomeProduto");
+        consulta.setParameter("nomeProduto", nomeProduto + "%");
         return consulta.list();
     }
 
