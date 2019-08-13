@@ -7,8 +7,6 @@ import br.com.glp.dao.PerfilDao;
 import br.com.glp.dao.PerfilDaoImpl;
 import br.com.glp.dao.ProdutoDao;
 import br.com.glp.dao.ProdutoDaoImpl;
-import br.com.glp.dao.SituacaoDao;
-import br.com.glp.dao.SituacaoDaoImpl;
 import br.com.glp.model.Contato;
 import br.com.glp.model.Endereco;
 import br.com.glp.model.Funcionario;
@@ -70,11 +68,8 @@ public class InicializarSistema {
         ultraGaz.setNomeMarca("UltraGaz");
 
         Situacao cheio = new Situacao("Cheio");
-
         Situacao vazio = new Situacao("Vazio");
-
         Situacao avariado = new Situacao("Avariado");
-        
         
         //Cadastrar P13 Marca UltraGaz
         Produto p13Cheio = new Produto(0, "P13", ultraGaz, cheio);
