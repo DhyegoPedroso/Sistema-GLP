@@ -28,19 +28,6 @@ public class Situacao implements Serializable {
     @OneToOne(mappedBy = "situacao")
     private Produto produto;
 
-    public Situacao() {
-    }
-
-    public Situacao(String nomeSituacao) {
-        this.nomeSituacao = nomeSituacao;
-    }
-
-    public Situacao(Long id, String nomeSituacao, Produto produto) {
-        this.id = id;
-        this.nomeSituacao = nomeSituacao;
-        this.produto = produto;
-    }
-
     public Long getId() {
         return id;
     }

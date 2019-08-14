@@ -67,10 +67,13 @@ public class InicializarSistema {
         Marca ultraGaz = new Marca();
         ultraGaz.setNomeMarca("UltraGaz");
 
-        Situacao cheio = new Situacao("Cheio");
-        Situacao vazio = new Situacao("Vazio");
-        Situacao avariado = new Situacao("Avariado");
-        
+        Situacao cheio = new Situacao();
+        cheio.setNomeSituacao("Cheio");
+        Situacao vazio = new Situacao();
+        vazio.setNomeSituacao("Vazio");
+        Situacao avariado = new Situacao();
+        avariado.setNomeSituacao("Avariado");
+
         //Cadastrar P13 Marca UltraGaz
         Produto p13Cheio = new Produto(0, "P13", ultraGaz, cheio);
         p13Cheio.setMarca(ultraGaz);

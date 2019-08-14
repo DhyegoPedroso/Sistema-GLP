@@ -22,9 +22,15 @@ public class ProdutoDaoImplTest {
 
     @Test
     public void testPesquisaEntidadeId() {
+        
+        session = HibernateUtil.abreSessao();
+        
+        produto = produtoDao.pesquisaEntidadeId(1L, session);
+        
+        System.out.println("Produto: "+produto.getNomeProduto());
     }
 
-    @Test
+//    @Test
     public void testListaTodos() {
         
         session = HibernateUtil.abreSessao();
@@ -32,26 +38,23 @@ public class ProdutoDaoImplTest {
         List<Produto> produtos = produtoDao.listaTodos(session);
 
         for (Produto produto1 : produtos) {
-            System.out.println("Id: " + produto1.getId());
-            System.out.println("Produto: " + produto1.getNomeProduto());
-            System.out.println("marca: " + produto1.getMarca().getNomeMarca());
-            System.out.println("Quantidade: " + produto1.getSituacao().getNomeSituacao());
-            System.out.println("Situação: " + produto1.getQuantidade());
+            System.out.println("Funcionario: " + produto1.getNomeProduto());
+            System.out.println("Login: " + produto1.getSituacao());
             System.out.println("\n");
-            System.out.println("------------------------------------------------");
+            System.out.println("---------------------------------------");
             System.out.println("\n");
         }
     }
 
-    @Test
+//    @Test
     public void testPesquisaPorNome() {
     }
 
-    @Test
+//    @Test
     public void testListarPorTipo() {
     }
 
-    @Test
+//    @Test
     public void testListarPorMarca() {
     }
 

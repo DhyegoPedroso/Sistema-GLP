@@ -28,19 +28,6 @@ public class Marca implements Serializable {
     @OneToOne(mappedBy = "marca")
     private Produto produto;
 
-    public Marca() {
-    }
-
-    public Marca(String nomeMarca) {
-        this.nomeMarca = nomeMarca;
-    }
-
-    public Marca(Long id, String nomeMarca, Produto produto) {
-        this.id = id;
-        this.nomeMarca = nomeMarca;
-        this.produto = produto;
-    }
-
     public Long getId() {
         return id;
     }
